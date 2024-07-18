@@ -26,6 +26,9 @@ stages:
     condition: succeeded()
     displayName: "Deploy To UAT"
 
+    variables:
+      Environment: "UAT"  # Example: Set the environment to UAT
+
     jobs:
       - job: ApprovalCheckDeployToUAT
         displayName: "Approval Check To Deploy To UAT"
@@ -60,4 +63,4 @@ stages:
               ResourceGroupName: "${{ variables.ADFResourceGroupName }}"
               ResourceGroupLocation: "${{ variables.ResourceGroupLocation }}"
               ADFArtifactName: "${{ variables.ADFArtifactName }}"
-              Environment: "${{ variables.Environment }}"
+              Environment: "${{ variables.Environment }}"  # Ensure this matches the defined environment
