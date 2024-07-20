@@ -1,6 +1,9 @@
 # DEV Pipeline Variables
 
 variables: 
+- name: AzureResourceManagerConnection # Service Principal that has the Contributor RBAC (role based access control) permission to deploy the Data Factory ARM template to the UAT resource group rg-adf-cicd-uat
+  value: DataFactoryCICDAzureResourceManager
+
 - name: BuildDataFactoryName
   value: adf-njl-dev
 
