@@ -9,6 +9,9 @@ stages:
   - stage: BuildDEVDataFactory
     displayName: "Build DEV Data Factory"
     
+    variables:
+    - template: variables/dev-variables.yml
+    
     jobs:
       - job: ValidateAndBuildDataFactoryTemplate
         displayName: "Build DEV Data Factory"
