@@ -28,6 +28,15 @@ steps:
 - checkout: self
   displayName: "Checkout Source Repo Code"
 
+- task: UsePythonVersion@0
+  displayName: Use Python 3.x
+  inputs:
+    versionSpec: 3.x
+- script: |
+    python -m pip install --upgrade pip
+    pip install azure-cli
+  displayName: Install Azure CLI
+
 - task: AzureCLI@2
   displayName: "Data Factory Deploy Via Bicep"
   inputs:
@@ -40,14 +49,6 @@ steps:
         --resource-group "${{ parameters.ADFResourceGroupName }}" \
         --template-file "${{ parameters.ADFBicepTemplateFilePath }}" \
         --parameters dataFactoryName="${{ parameters.DataFactoryName }}" 
-- task: UsePythonVersion@0
-  displayName: Use Python 3.x
-  inputs:
-    versionSpec: 3.x
-- script: |
-    python -m pip install --upgrade pip
-    pip install azure-cli
-  displayName: Install Azure CLI
     
 - task: AzureCLI@2
   displayName: "Key Vault Deploy Via Bicep"
