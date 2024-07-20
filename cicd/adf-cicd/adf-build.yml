@@ -28,6 +28,17 @@ steps:
       command: install
       workingDir: ${{ parameters.WorkingDirectory }}
       verbose: true
+  
+  # Install Azure CLI using inline PowerShell script
+  - task: CmdLine@2
+    displayName: 'Install Azure CLI'
+    inputs:
+     script: |
+       echo "Installing Azure CLI"
+       curl -L https://aka.ms/InstallAzureCliWindows -o InstallAzureCliWindows.exe
+       InstallAzureCliWindows.exe /quiet
+       az --version
+      
   - task: UsePythonVersion@0
     displayName: Use Python 3.x
     inputs:
