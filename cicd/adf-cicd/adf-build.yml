@@ -29,7 +29,20 @@ steps:
     command: "install"
     workingDir: "${{ parameters.WorkingDirectory }}"
     verbose: true
+	
+# Install Azure CLI
+- task: UsePythonVersion@0
+  displayName: "Use Python 3.x"
+  inputs:
+    versionSpec: '3.x'
 
+- script: |
+    python -m pip install --upgrade pip
+    pip install azure-cli
+  displayName: 'Install Azure CLI'
+
+- script: az --version
+  displayName: 'Verify Azure CLI Installation'
 - task: Npm@1
   displayName: "Validate And Generate ADF ARM Template And Scripts"
   inputs:
