@@ -51,7 +51,6 @@ stages:
               KeyVaultResourceGroupName: "${{ variables.KeyVaultResourceGroupName }}"
               KeyVaultURL: "${{ variables.KeyVaultURL }}"
               KeyVaultBicepTemplateFilePath: "${{ variables.KeyVaultBicepTemplateFilePath }}"
-              AzureResourceManagerConnection: "${{ variables.AzureResourceManagerConnection }}"
               
       - job: DeployDataFactory
         displayName: "Deploy ADF ARM Template To Target ADF"
