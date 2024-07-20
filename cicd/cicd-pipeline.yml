@@ -22,7 +22,7 @@ stages:
               ResourceGroupName: "${{ variables.BuildDataFactoryResourceGroupName }}"
               ADFArtifactName: "${{ variables.ADFArtifactName }}"
               WorkingDirectory: "${{ variables.WorkingDirectory }}"
-
+              AzureResourceManagerConnection: "${{ variables.AzureResourceManagerConnection }}"
   - stage: DeployToUAT
     dependsOn: BuildDEVDataFactory
     condition: succeeded()
