@@ -34,8 +34,8 @@ steps:
     versionSpec: 3.x
 - script: |
     python -m pip install --upgrade pip
-    pip install azure-cli
-  displayName: Install Azure CLI
+    pip install setuptools azure-cli
+  displayName: Install setuptools and Azure CLI
 
 - task: AzureCLI@2
   displayName: "Data Factory Deploy Via Bicep"
