@@ -23,15 +23,24 @@ steps:
     displayName: Install NPM Package
     inputs:
       command: install
-      workingDir: '${{ parameters.WorkingDirectory }}'
+      workingDir: ${{ parameters.WorkingDirectory }}
       verbose: true
+  - task: UsePythonVersion@0
+    displayName: Use Python 3.x
+    inputs:
+      versionSpec: 3.x
+  - script: |
+      python -m pip install --upgrade pip
+      pip install azure-cli
+    displayName: Install Azure CLI
+  - script: az --version
+    displayName: Verify Azure CLI Installation
   - task: Npm@1
     displayName: Validate And Generate ADF ARM Template And Scripts
     inputs:
       command: custom
-      workingDir: '${{ parameters.WorkingDirectory }}'
-      customCommand: >-
-        run build export ${{ parameters.WorkingDirectory }}
+      workingDir: ${{ parameters.WorkingDirectory }}
+      customCommand: run build export ${{ parameters.WorkingDirectory }}
         /subscriptions/$(DEVSubscriptionID)/resourceGroups/${{
         parameters.ResourceGroupName
         }}/providers/Microsoft.DataFactory/factories/${{
@@ -39,6 +48,6 @@ steps:
   - task: PublishPipelineArtifact@1
     displayName: Publish ADF ARM Template And Scripts
     inputs:
-      targetPath: '${{ parameters.WorkingDirectory }}/ArmTemplate'
-      artifactName: '${{ parameters.ADFArtifactName }}'
+      targetPath: ${{ parameters.WorkingDirectory }}/ArmTemplate
+      artifactName: ${{ parameters.ADFArtifactName }}
       publishLocation: pipeline
