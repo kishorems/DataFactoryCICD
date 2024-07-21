@@ -40,7 +40,7 @@ steps:
 - task: AzureCLI@2
   displayName: "Data Factory Deploy Via Bicep"
   inputs:
-    azureSubscription: DataFactoryCICDAzureResourceManager
+    azureSubscription: "DataFactoryCICDAzureResourceManager"
     scriptType: bash
     scriptLocation: "inlineScript"
     inlineScript: |
@@ -55,7 +55,7 @@ steps:
 - task: AzureCLI@2
   displayName: "Key Vault Deploy Via Bicep"
   inputs:
-    azureSubscription: DataFactoryCICDAzureResourceManager
+    azureSubscription: "DataFactoryCICDAzureResourceManager"
     scriptType: bash
     scriptLocation: "inlineScript"
     inlineScript: |
