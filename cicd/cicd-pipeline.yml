@@ -4,7 +4,6 @@ trigger:
   - main
 
 pool: my-personal-computer
-  vmImage: "windows-latest"
 
 
 stages:
