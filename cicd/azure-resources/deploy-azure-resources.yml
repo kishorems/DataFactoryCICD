@@ -44,7 +44,7 @@ steps:
     scriptType: bash
     scriptLocation: "inlineScript"
     inlineScript: |
-	  echo "Setting subscription to DataFactoryCICDAzureResourceManager"
+      echo "Setting subscription to DataFactoryCICDAzureResourceManager"
       az account set --subscription DataFactoryCICDAzureResourceManager
       az deployment group create \
         --name "MyADFDeployment$(Build.BuildNumber)" \
