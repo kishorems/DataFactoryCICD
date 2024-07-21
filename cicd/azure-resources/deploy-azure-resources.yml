@@ -44,6 +44,7 @@ steps:
     scriptType: bash
     scriptLocation: "inlineScript"
     inlineScript: |
+	  echo "Setting subscription to DataFactoryCICDAzureResourceManager"
       az account set --subscription DataFactoryCICDAzureResourceManager
       az deployment group create \
         --name "MyADFDeployment$(Build.BuildNumber)" \
@@ -54,7 +55,7 @@ steps:
 - task: AzureCLI@2
   displayName: "Key Vault Deploy Via Bicep"
   inputs:
-    azureSubscription: "${{ parameters.AzureResourceManagerConnection }}"
+    azureSubscription: DataFactoryCICDAzureResourceManager
     scriptType: bash
     scriptLocation: "inlineScript"
     inlineScript: |
