@@ -33,11 +33,15 @@ stages:
       Environment: "UAT"  # Example: Set the environment to UAT
 
     jobs:
-      - job: ApprovalCheckDeployToUAT
-        displayName: "Approval Check To Deploy To UAT"
-        steps:
-          - powershell: |
-              Write-Host "Deploy To UAT has been fully approved. Starting the deployment to UAT."
+      - deployment: ApprovalCheckDeployToUAT
+        environment: 'UAT'
+        strategy:
+         runOnce:
+          deploy:
+           #displayName: "Approval Check To Deploy To UAT"
+           steps:
+             - powershell: |
+                Write-Host "Deploy To UAT has been fully approved. Starting the deployment to UAT."
 
       - job: DeployAzureResources
         displayName: "Deploy Azure Resources Via Bicep"
