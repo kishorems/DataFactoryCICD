@@ -3,8 +3,9 @@ name: DataFactory-CICD-Pipeline-$(Date:yyyyMMdd)$(Rev:.r)
 trigger:
   - main
 
-pool:
+pool: my-personal-computer
   vmImage: "windows-latest"
+
 
 stages:
   - stage: BuildDEVDataFactory
