@@ -44,6 +44,7 @@ steps:
     scriptType: bash
     scriptLocation: "inlineScript"
     inlineScript: |
+      az account set --subscription DataFactoryCICDAzureResourceManager
       az deployment group create \
         --name "MyADFDeployment$(Build.BuildNumber)" \
         --resource-group "${{ parameters.ADFResourceGroupName }}" \
